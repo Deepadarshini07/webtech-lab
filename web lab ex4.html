@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comic Book Store - URK24CS1237</title>
+
+    <style>
+
+        /* ================================
+           1. ROUNDED CORNERS
+           ================================ */
+        .store-header {
+            background: #ffcc00;
+            border-radius: 25px;
+            padding: 25px;
+            text-align: center;
+            border: 5px solid #000;
+        }
+
+        /* Four different corner values */
+        .special-box {
+            border-radius: 15px 50px 30px 5px;
+            background: #ff4444;
+            padding: 15px;
+            margin: 20px;
+            border: 4px solid #000;
+        }
+
+
+        /* ================================
+           2. BORDER IMAGE
+           ================================ */
+        .comic-card {
+            border: 15px solid transparent;
+
+            /* Comic-style border image */
+            border-image-source: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Comic_book_border.svg/320px-Comic_book_border.svg.png");
+            border-image-slice: 30;
+            border-image-repeat: round;
+
+            padding: 20px;
+            background: #fff;
+        }
+
+
+        /* ================================
+           3. MULTIPLE BACKGROUNDS
+           ================================ */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            background-image:
+                radial-gradient(circle, #ffffff 2px, transparent 3px),
+                linear-gradient(135deg, #ff1744, #ffeb3b);
+
+            background-size: 25px 25px, cover;
+            background-position: center;
+        }
+
+
+        /* ================================
+           4. BACKGROUND SIZE
+           ================================ */
+        .hero {
+            min-height: 300px;
+
+            background-image:
+                url("https://images.unsplash.com/photo-1608889825103-eb5ed706fc64?auto=format&fit=crop&w=1200&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+
+            border: 6px solid #000;
+        }
+
+
+        /* ================================
+           5. PSEUDO-CLASSES ON FORM INPUTS
+           ================================ */
+
+        input {
+            padding: 12px;
+            margin: 8px;
+            width: 250px;
+            border: 3px solid #222;
+            border-radius: 8px;
+        }
+
+        input:focus {
+            background: #fff3cd;
+            border-color: #ff1744;
+            outline: none;
+        }
+
+        input:required {
+            border-left: 8px solid #ff9800;
+        }
+
+        input:valid {
+            border-color: green;
+        }
+
+        input:invalid {
+            border-color: red;
+        }
+
+
+        /* ================================
+           6. ADJACENT SIBLING COMBINATOR (+)
+           ================================ */
+
+        .itemName {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 12px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .itemImg {
+            width: 180px;
+            opacity: 0.2;
+            transition: 0.5s;
+            vertical-align: middle;
+            margin-left: 15px;
+            border: 4px solid #000;
+        }
+
+        /* Image immediately after itemName */
+        .itemName:hover + .itemImg {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+
+        /* ================================
+           7. NTH-CHILD ODD / EVEN
+           ================================ */
+
+        .comic-table {
+            width: 90%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background: white;
+            border: 4px solid #000;
+        }
+
+        .comic-table th {
+            background: #000;
+            color: #fff;
+            padding: 15px;
+        }
+
+        .comic-table td {
+            padding: 15px;
+            border: 2px solid #555;
+            text-align: center;
+        }
+
+        .comic-table tr:nth-child(odd) {
+            background: #ffe066;
+        }
+
+        .comic-table tr:nth-child(even) {
+            background: #ff8a80;
+        }
+
+        .comic-table tr:hover {
+            background: #00e5ff;
+            transform: scale(1.01);
+        }
+
+
+        /* General sections */
+        section {
+            width: 85%;
+            margin: 25px auto;
+            padding: 25px;
+            background: rgba(255,255,255,0.95);
+            border: 4px solid #000;
+            box-shadow: 8px 8px 0 #000;
+        }
+
+        h2 {
+            background: #000;
+            color: #fff;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        .price {
+            color: #e91e63;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            background: #000;
+            color: #fff;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="store-header">
+        <h1>💥 SUPER HERO COMIC STORE 💥</h1>
+        <h3>Welcome to the Ultimate Comic Book Collection!</h3>
+        <p><strong>Registration No: URK24CS1237</strong></p>
+    </header>
+
+
+    <!-- BACKGROUND SIZE -->
+    <div class="hero">
+        <div>
+            <h1 style="font-size: 50px;">POW! 💥 BAM! 💥 BOOM!</h1>
+            <h2>ENTER THE WORLD OF COMICS</h2>
+        </div>
+    </div>
+
+
+    <!-- ROUNDED CORNERS -->
+    <section>
+        <h2>1. Rounded Corners</h2>
+
+        <div class="special-box">
+            <h3>🦸 Special Comic Deal!</h3>
+            <p>
+                Get your favorite superhero comics at amazing prices!
+            </p>
+        </div>
+
+        <p>
+            This section demonstrates
+            <strong>border-radius: 15px 50px 30px 5px;</strong>
+        </p>
+    </section>
+
+
+    <!-- BORDER IMAGE -->
+    <section>
+        <h2>2. Border Image</h2>
+
+        <div class="comic-card">
+            <h2>🕷️ SUPERHERO COLLECTION</h2>
+
+            <p>
+                Explore our collection of action-packed superhero comics.
+            </p>
+
+            <p class="price">Price: ₹499</p>
+        </div>
+    </section>
+
+
+    <!-- MULTIPLE BACKGROUNDS -->
+    <section>
+        <h2>3. Multiple Backgrounds</h2>
+
+        <p>
+            This page uses multiple background layers:
+        </p>
+
+        <ul>
+            <li>Comic-style dot pattern</li>
+            <li>Color gradient</li>
+        </ul>
+
+        <p>
+            Multiple background images are separated using commas.
+        </p>
+    </section>
+
+
+    <!-- BACKGROUND SIZE -->
+    <section>
+        <h2>4. Background Size</h2>
+
+        <p>
+            The hero section uses:
+            <strong>background-size: cover;</strong>
+        </p>
+
+        <p>
+            The background image completely covers the hero area while
+            maintaining its aspect ratio.
+        </p>
+    </section>
+
+
+    <!-- FORM INPUT PSEUDO CLASSES -->
+    <section>
+        <h2>5. Comic Store Registration</h2>
+
+        <form>
+            <label>Name:</label><br>
+            <input type="text" placeholder="Enter your name" required>
+
+            <br>
+
+            <label>Email:</label><br>
+            <input type="email" placeholder="Enter your email" required>
+
+            <br>
+
+            <label>Favorite Comic:</label><br>
+            <input type="text" placeholder="Eg: Spider-Man" required>
+
+            <br>
+
+            <button type="submit">
+                JOIN THE HERO CLUB 🚀
+            </button>
+        </form>
+
+        <p>
+            Try clicking inside the input boxes to see
+            <strong>:focus</strong>, <strong>:required</strong>,
+            <strong>:valid</strong> and <strong>:invalid</strong>.
+        </p>
+    </section>
+
+
+    <!-- ADJACENT SIBLING -->
+    <section>
+        <h2>6. Adjacent Sibling Combinator</h2>
+
+        <p>
+            Hover over the comic name to reveal the image.
+        </p>
+
+        <div>
+            <span class="itemName">SPIDER-MAN</span>
+
+            <img
+                class="itemImg"
+                src="https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=400&q=80"
+                alt="Comic">
+        </div>
+
+        <br>
+
+        <div>
+            <span class="itemName">BATMAN</span>
+
+            <img
+                class="itemImg"
+                src="https://images.unsplash.com/photo-1531259683007-016a7b628fc3?auto=format&fit=crop&w=400&q=80"
+                alt="Batman">
+        </div>
+
+        <p>
+            CSS used:
+            <strong>.itemName:hover + .itemImg</strong>
+        </p>
+    </section>
+
+
+    <!-- NTH CHILD -->
+    <section>
+        <h2>7. nth-child(odd) / nth-child(even)</h2>
+
+        <table class="comic-table">
+
+            <tr>
+                <th>Comic</th>
+                <th>Hero</th>
+                <th>Price</th>
+            </tr>
+
+            <tr>
+                <td>Comic #1</td>
+                <td>Spider-Man</td>
+                <td>₹299</td>
+            </tr>
+
+            <tr>
+                <td>Comic #2</td>
+                <td>Batman</td>
+                <td>₹399</td>
+            </tr>
+
+            <tr>
+                <td>Comic #3</td>
+                <td>Iron Man</td>
+                <td>₹349</td>
+            </tr>
+
+            <tr>
+                <td>Comic #4</td>
+                <td>Superman</td>
+                <td>₹449</td>
+            </tr>
+
+            <tr>
+                <td>Comic #5</td>
+                <td>Wonder Woman</td>
+                <td>₹499</td>
+            </tr>
+
+            <tr>
+                <td>Comic #6</td>
+                <td>Hulk</td>
+                <td>₹379</td>
+            </tr>
+
+        </table>
+
+        <p>
+            Hover over the rows to see the effect of
+            <strong>:nth-child(odd)</strong>,
+            <strong>:nth-child(even)</strong> and
+            <strong>:hover</strong>.
+        </p>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <h2>💥 SUPER HERO COMIC STORE 💥</h2>
+
+        <p>
+            Designed using HTML & CSS
+        </p>
+
+        <p>
+            <strong>Registration Number: URK24CS1237</strong>
+        </p>
+
+        <p>
+            © 2026 Comic Book Store
+        </p>
+    </footer>
+
+</body>
+</html>
