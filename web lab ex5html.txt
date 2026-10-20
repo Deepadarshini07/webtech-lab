@@ -1,0 +1,196 @@
+
+DEEPADARSHINI S URK24CS1237 <deepadarshinis@karunya.edu.in>
+Attachments
+Sep 2, 2026, 11:54 AM
+to me
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab Exercises - urk24cs1237</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Student Registration ID Header -->
+    <h2>Student ID: urk24cs1237</h2>
+    <hr>
+
+    <!-- QUESTION 1 -->
+    <h3>1. Shortest and Longest Word</h3>
+    <input type="text" id="wordInput" value="Web Development Tutorial">
+    <button onclick="findWords()">Find Words</button>
+    <p id="wordOutput"></p>
+    <hr>
+
+    <!-- QUESTION 2 -->
+    <h3>2. BMI Calculator</h3>
+    Weight (kg): <input type="text" id="weight" value="70"><br>
+    Height (m): <input type="text" id="height" value="1.75"><br>
+    <button onclick="calculateBMI()">Calculate</button>
+    <p>BMI: <span id="score"></span></p>
+    <p>Type: <span id="type"></span></p>
+    <hr>
+
+    <!-- QUESTION 3 -->
+    <h3>3. Fruit Farm</h3>
+    Rows: <input type="text" id="rows" value="3"><br>
+    Columns: <input type="text" id="columns" value="4"><br>
+    <button onclick="grow()">Plant Garden</button>
+    <div id="garden"></div>
+    <hr>
+
+    <!-- QUESTION 4 -->
+    <h3>4. Currency Converter</h3>
+    Convert: <input type="text" id="data" value="100">
+    <select id="from">
+        <option>Indian Rupee</option>
+        <option>US Dollar</option>
+    </select>
+    to
+    <select id="to">
+        <option>US Dollar</option>
+        <option>Indian Rupee</option>
+    </select>
+    <button onclick="convertCurrency()">Convert</button>
+    <p>Answer: <span id="answer"></span></p>
+    <hr>
+
+    <!-- QUESTION 5 -->
+    <h3>5. Coin Flip</h3>
+    <img src="heads.jpg" id="coin" alt="[Coin Image]" width="100"><br>
+    <button id="flip">Flip!</button>
+    <p>Heads Total: <span id="num_heads">0</span></p>
+    <p>Tails Total: <span id="num_tails">0</span></p>
+    <hr>
+
+    <!-- QUESTION 6 -->
+    <h3>6. Cake Order Form</h3>
+    # of 1/2kg Cakes <input type="text" id="small" value="1"><br>
+    # of 1kg Cakes <input type="text" id="medium" value="0"><br>
+    # of 2kg Cakes <input type="text" id="large" value="1"><br>
+    Tip:
+    <label><input type="radio" value="10" name="tip"> 10%</label>
+    <label><input type="radio" value="15" name="tip" checked> 15%</label>
+    <label><input type="radio" value="20" name="tip"> 20%</label>
+    <br>
+    <button id="submit">Calculate Order</button>
+    <p>Cost of order: <span id="price"></span></p>
+
+
+    <!-- JAVASCRIPT CODES -->
+    <script>
+        // 1. Shortest and Longest Word Finder
+        function findWords() {
+            var str = document.getElementById("wordInput").value;
+            var words = str.split(" ");
+            var shortest = words[0];
+            var longest = words[0];
+           
+            for (var i = 1; i < words.length; i++) {
+                if (words[i].length < shortest.length) shortest = words[i];
+                if (words[i].length > longest.length) longest = words[i];
+            }
+           
+            document.getElementById("wordOutput").innerHTML =
+                "Shortest: '" + shortest + "', Longest: '" + longest + "' (ID: urk24cs1237)";
+        }
+
+        // 2. BMI Calculator
+        function calculateBMI() {
+            var weight = parseFloat(document.getElementById("weight").value);
+            var height = parseFloat(document.getElementById("height").value);
+            var bmi = weight / (height * height);
+            var bodyType = "";
+           
+            if (bmi < 18) bodyType = "Underweight";
+            else if (bmi >= 18 && bmi <= 25) bodyType = "Normal";
+            else if (bmi > 25 && bmi <= 30) bodyType = "Overweight";
+            else bodyType = "Obese";
+           
+            document.getElementById("score").innerHTML = bmi.toFixed(2) + " - urk24cs1237";
+            document.getElementById("type").innerHTML = bodyType;
+        }
+
+        // 3. Fruit Farm
+        function grow() {
+            var rows = parseInt(document.getElementById("rows").value);
+            var cols = parseInt(document.getElementById("columns").value);
+            var gardenDiv = document.getElementById("garden");
+            gardenDiv.innerHTML = "<p>ID: urk24cs1237</p>";
+           
+            var arr = ["Orange.jpg", "Apple.jpg"];
+           
+            for (var i = 0; i < rows; i++) {
+                var rowText = "";
+                for (var j = 0; j < cols; j++) {
+                    var randomIndex = Math.floor(Math.random() * 2);
+                    rowText += "<img src='" + arr[randomIndex] + "' width='100' height='100' alt='" + arr[randomIndex] + "'> ";
+                }
+                gardenDiv.innerHTML += "<div>" + rowText + "</div>";
+            }
+        }
+
+        // 4. Currency Converter
+        function convertCurrency() {
+            var inputData = parseFloat(document.getElementById("data").value);
+            var fromUnit = document.getElementById("from").value;
+            var toUnit = document.getElementById("to").value;
+            var result = 0;
+           
+            if (fromUnit === "Indian Rupee" && toUnit === "US Dollar") result = inputData * 0.015;
+            else if (fromUnit === "US Dollar" && toUnit === "Indian Rupee") result = inputData * 67.12;
+            else result = inputData;
+           
+            document.getElementById("answer").innerHTML = result.toFixed(2) + " " + toUnit + " (ID: urk24cs1237)";
+        }
+
+        // 5. Coin Flip
+        var headsCount = 0;
+        var tailsCount = 0;
+        document.getElementById("flip").addEventListener("click", flipFunction);
+
+        function flipFunction() {
+            var coinImg = document.getElementById("coin");
+            var coinSide = Math.floor(Math.random() * 2);
+           
+            if (coinSide === 0) {
+                coinImg.src = "heads.jpg";
+                headsCount++;
+                document.getElementById("num_heads").innerHTML = headsCount + " (ID: urk24cs1237)";
+            } else {
+                coinImg.src = "tails.jpg";
+                tailsCount++;
+                document.getElementById("num_tails").innerHTML = tailsCount + " (ID: urk24cs1237)";
+            }
+        }
+
+        // 6. Cake Order Form
+        document.getElementById("submit").addEventListener("click", calculateOrder);
+
+        function calculateOrder() {
+            var smallCakes = parseInt(document.getElementById("small").value) || 0;
+            var mediumCakes = parseInt(document.getElementById("medium").value) || 0;
+            var largeCakes = parseInt(document.getElementById("large").value) || 0;
+           
+            var baseCost = (smallCakes * 100) + (mediumCakes * 200) + (largeCakes * 400);
+            var taxCost = baseCost * 1.09;
+            var tipPercent = parseFloat(document.querySelector('input[name="tip"]:checked').value);
+            var finalTotal = taxCost + (taxCost * (tipPercent / 100));
+           
+            document.getElementById("price").innerHTML = "Rs. " + finalTotal.toFixed(2) + " (ID: urk24cs1237)";
+        }
+    </script>
+</body>
+</html>
