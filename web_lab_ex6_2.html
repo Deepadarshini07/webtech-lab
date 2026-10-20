@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Lab Programs</title>
+</head>
+<body onload="init()">
+
+<h1>JavaScript Lab Programs</h1>
+<h3>Register Number: URK24CS1237</h3>
+
+<hr>
+
+<!-- 1. Digital Clock -->
+<h2>1. Digital Clock</h2>
+<p id="time"></p>
+
+<hr>
+
+<!-- 2. Background Colour -->
+<h2>2. Dynamic Background</h2>
+<button onclick="setBackgroundColor()">Change Background</button>
+<p>Background changes automatically every 30 seconds.</p>
+
+<hr>
+
+<!-- 3. Font Size -->
+<h2>3. Change Font Size</h2>
+<p id="para1" onmouseover="incSize()" onmouseout="decSize()">
+    Move the mouse over this paragraph.
+</p>
+
+<hr>
+
+<!-- 4. Move Car -->
+<h2>4. Move and Stop Car</h2>
+<img id="img" width="100"
+     src="car.png"
+     style="position:relative; left:0px;">
+<br><br>
+<button onclick="moveRight()">Move</button>
+<button onclick="stop()">Stop</button>
+
+<hr>
+
+<!-- 5. Student Objects -->
+<h2>5. Student Details</h2>
+<div id="demo"></div>
+
+<script>
+
+// 1. Digital Clock
+function display()
+{
+    var d = new Date();
+    document.getElementById("time").innerHTML =
+        d.getHours() + ":" +
+        d.getMinutes() + ":" +
+        d.getSeconds();
+}
+
+display();
+setInterval(display, 1000);
+
+
+// 2. Change Background Colour
+function setBackgroundColor()
+{
+    var red = Math.floor(Math.random() * 256);
+    var green = Math.floor(Math.random() * 256);
+    var blue = Math.floor(Math.random() * 256);
+
+    var color = "rgb(" + red + "," + green + "," + blue + ")";
+    document.body.style.backgroundColor = color;
+}
+
+setInterval(setBackgroundColor, 30000);
+
+
+// 3. Increase and Decrease Font Size
+function incSize()
+{
+    document.getElementById("para1").style.fontSize = "28px";
+}
+
+function decSize()
+{
+    document.getElementById("para1").style.fontSize = "16px";
+}
+
+
+// 4. Move and Stop Car
+var imgObj;
+var animate;
+
+function init()
+{
+    imgObj = document.getElementById("img");
+}
+
+function moveRight()
+{
+    clearTimeout(animate);
+
+    imgObj.style.left =
+        parseInt(imgObj.style.left || "0") + 1 + "px";
+
+    animate = setTimeout(moveRight, 20);
+}
+
+function stop()
+{
+    clearTimeout(animate);
+}
+
+
+// 5. Array of Student Objects
+var students = [
+    {name: "John", regno: "UR13CS129", year: 1999},
+    {name: "David", regno: "UR13CS130", year: 2001},
+    {name: "Priya", regno: "UR13CS131", year: 2002},
+    {name: "Ravi", regno: "UR13CS132", year: 1998}
+];
+
+var output = "";
+
+for (var i = 0; i < students.length; i++)
+{
+    output += "Name: " + students[i].name + "<br>";
+    output += "Register Number: " + students[i].regno + "<br>";
+    output += "Birth Year: " + students[i].year + "<br>";
+
+    if (students[i].year < 2000)
+    {
+        output += "Born before 2000";
+    }
+    else if (students[i].year > 2000)
+    {
+        output += "Born after 2000";
+    }
+    else
+    {
+        output += "Born in 2000";
+    }
+
+    output += "<hr>";
+}
+
+document.getElementById("demo").innerHTML = output;
+
+</script>
+</body>
+</html>
