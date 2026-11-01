@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comic Book Budget Calculator</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #fff3cd;
+        }
+        h1 {
+            color: darkred;
+        }
+        input {
+            padding: 8px;
+            margin: 8px;
+        }
+        button {
+            padding: 10px;
+            background-color: orange;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>COMIC BOOK BUDGET CALCULATOR</h1>
+    <h3>Register Number: URK24CS1237</h3>
+
+    <h3>Enter Amount to Manage</h3>
+    <input type="number" id="amount" placeholder="Enter amount">
+
+    <h3>How would you like to divide your money?</h3>
+
+    <label>Superhero Comics (%)</label>
+    <input type="number" id="superhero" value="40"><br>
+
+    <label>Manga Comics (%)</label>
+    <input type="number" id="manga" value="30"><br>
+
+    <label>Fantasy Comics (%)</label>
+    <input type="number" id="fantasy" value="20"><br>
+
+    <label>Savings (%)</label>
+    <input type="number" id="saving" value="10"><br>
+
+    <button onclick="calculate()">Evaluate My Budget</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function calculate() {
+            let amount = Number(document.getElementById("amount").value);
+
+            let superhero = Number(document.getElementById("superhero").value);
+            let manga = Number(document.getElementById("manga").value);
+            let fantasy = Number(document.getElementById("fantasy").value);
+            let saving = Number(document.getElementById("saving").value);
+
+            if (amount <= 0 ||
+                superhero < 0 || manga < 0 ||
+                fantasy < 0 || saving < 0 ||
+                superhero + manga + fantasy + saving != 100) {
+
+                document.getElementById("result").innerHTML =
+                    "Enter a valid amount and percentages totaling 100%.";
+                return;
+            }
+
+            document.getElementById("result").innerHTML =
+                "Superhero Comics: Rs." + amount * superhero / 100 + "<br>" +
+                "Manga Comics: Rs." + amount * manga / 100 + "<br>" +
+                "Fantasy Comics: Rs." + amount * fantasy / 100 + "<br>" +
+                "Savings: Rs." + amount * saving / 100;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comic Book Store</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #e6f7ff;
+        }
+        h1 {
+            color: darkblue;
+        }
+        input {
+            width: 70px;
+            padding: 5px;
+        }
+        button {
+            padding: 10px;
+            margin: 15px;
+            background-color: lightblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>COMIC BOOK STORE</h1>
+    <h3>Register Number: URK24CS1237</h3>
+
+    <h2>Available Comic Books</h2>
+
+    <p>Spider-Man Comic - Rs.300</p>
+    <p>Batman Comic - Rs.200</p>
+    <p>Superman Comic - Rs.250</p>
+    <p>Avengers Comic - Rs.500</p>
+
+    <h2>Order Comic Books</h2>
+
+    <label>Spider-Man (Quantity)</label>
+    <input type="number" id="c1" value="0" min="0"><br><br>
+
+    <label>Batman (Quantity)</label>
+    <input type="number" id="c2" value="0" min="0"><br><br>
+
+    <label>Superman (Quantity)</label>
+    <input type="number" id="c3" value="0" min="0"><br><br>
+
+    <label>Avengers (Quantity)</label>
+    <input type="number" id="c4" value="0" min="0"><br><br>
+
+    <button onclick="placeOrder()">Place Order</button>
+
+    <h2>Purchase Order Bill</h2>
+    <h3 id="bill">Total Price: Rs.0</h3>
+
+    <script>
+        function placeOrder() {
+            let a = Number(document.getElementById("c1").value);
+            let b = Number(document.getElementById("c2").value);
+            let c = Number(document.getElementById("c3").value);
+            let d = Number(document.getElementById("c4").value);
+
+            if ([a, b, c, d].some(q => q < 0 || !Number.isInteger(q))) {
+                document.getElementById("bill").innerHTML =
+                    "Please enter valid quantities.";
+                return;
+            }
+
+            let total = a * 300 + b * 200 + c * 250 + d * 500;
+
+            document.getElementById("bill").innerHTML =
+                "Total Price: Rs." + total;
+        }
+    </script>
+
+</body>
+</html>
