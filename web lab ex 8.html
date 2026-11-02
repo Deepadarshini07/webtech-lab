@@ -1,0 +1,90 @@
+```html
+<!DOCTYPE html>
+<html ng-app="comicApp">
+<head>
+    <title>Comic Book Comments</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="ComicController">
+
+    <h1>Comic Book World</h1>
+    <h3>Register No: URK24CS1237</h3>
+
+    <h2>Post Your Comment</h2>
+
+    <textarea ng-model="comment"
+    placeholder="Write your comic book review"></textarea>
+
+    <br><br>
+    <button ng-click="addComment()">Post Comment</button>
+
+    <h3>Comic Book Reviews</h3>
+    <ul>
+        <li ng-repeat="c in comments">
+            {{c}}
+            <button ng-click="removeComment($index)">Delete</button>
+        </li>
+    </ul>
+
+    <script>
+        angular.module('comicApp', [])
+        .controller('ComicController', function($scope) {
+            $scope.comments = [];
+
+            $scope.addComment = function() {
+                if ($scope.comment) {
+                    $scope.comments.push($scope.comment);
+                    $scope.comment = '';
+                }
+            };
+
+            $scope.removeComment = function(index) {
+                $scope.comments.splice(index, 1);
+            };
+        });
+    </script>
+
+</body>
+</html>
+```
+```html
+<!DOCTYPE html>
+<html ng-app="comicApp">
+<head>
+    <title>My Comic Book List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="ComicController">
+
+    <h1>My Comic Book Collection</h1>
+    <h3>Register No: URK24CS1237</h3>
+
+    <input type="text" ng-model="comic"
+    placeholder="Enter comic book name">
+
+    <button ng-click="addComic()">Add Comic</button>
+
+    <h2>Comic Books</h2>
+    <ul>
+        <li ng-repeat="c in comics">
+            {{c}}
+        </li>
+    </ul>
+
+    <script>
+        angular.module('comicApp', [])
+        .controller('ComicController', function($scope) {
+            $scope.comics = [];
+
+            $scope.addComic = function() {
+                if ($scope.comic) {
+                    $scope.comics.push($scope.comic);
+                    $scope.comic = '';
+                }
+            };
+        });
+    </script>
+
+</body>
+</html>
+```
